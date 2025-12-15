@@ -1,397 +1,58 @@
-# README - CHƯƠNG 4: XÂY DỰNG KỊCH BẢN DEMO TRÊN HỆ THỐNG AI GIẢ ĐỊNH
-
-## 📋 Tổng Quan
-
-Đây là hướng dẫn chi tiết để **xây dựng và chạy các thực nghiệm cho Chương 4** của đề tài:
-
-> **"NGHIÊN CỨU VÀ ĐỀ XUẤT KHUNG PHƯƠNG PHÁP KIỂM THỬ ĐỐI KHÁNG TỰ ĐỘNG HỆ THỐNG AI THEO TIÊU CHUẨN ISO 23894:2023"**
-
-Chương 4 bao gồm **3 kịch bản demo** minh họa khung AAT-ISO Framework trên các hệ thống AI giả định.
-
----
-
-## 📚 Tài Liệu Đi Kèm
-
-Bạn sẽ nhận được **4 tệp chính**:
-
-### 1️⃣ **`demo_thuc_nghiem_Ch4.md`** (Mã nguồn chính - 3000+ dòng)
-- ✅ Mã Python đầy đủ cho tất cả 3 Demo
-- ✅ Hướng dẫn cài đặt môi trường
-- ✅ Script huấn luyện, tấn công, đánh giá
-- ✅ Visualizations và báo cáo
-
-**Nội dung:**
-```
-├── Phần 1: Thiết lập môi trường
-├── Phần 2: Hệ thống A - AI Dự đoán (CNN + MNIST)
-│   ├── 2.1 Xây dựng mô hình
-│   ├── 2.2 Demo 1: Evasion Attack (FGSM)
-│   └── 2.3 Demo 2: Data Poisoning
-├── Phần 3: Hệ thống B - AI Tạo sinh (Chatbot)
-│   ├── 3.1 Xây dựng Chatbot
-│   └── 3.2 Demo 3: Prompt Injection
-├── Phần 4: Tích hợp và chạy tất cả
-└── Phần 5: Hướng dẫn chạy
-```
-
-### 2️⃣ **`quick_demo.py`** (Demo nhanh - Chạy ngay!)
-- ✅ Không cần cài đặt library phức tạp
-- ✅ Kết quả mô phỏng trong ~30 giây
-- ✅ Hoàn hảo để kiểm tra nhanh
-
-**Chạy:**
-```bash
-python quick_demo.py
-```
-
-### 3️⃣ **`huong_dan_giai_thich.md`** (Giải thích chi tiết - 2000+ dòng)
-- ✅ Nền tảng lý thuyết cho mỗi Demo
-- ✅ Diễn giải chi tiết kết quả
-- ✅ Ý nghĩa theo ISO 23894
-- ✅ FAQ và biện pháp giảm thiểu rủi ro
-
-**Nội dung:**
-```
-├── I. Tổng quan Chương 4
-├── II. Giải thích Demo 1: Evasion Attack
-├── III. Giải thích Demo 2: Data Poisoning
-├── IV. Giải thích Demo 3: Prompt Injection
-├── V. Tóm tắt chung
-├── VI. Quy trình thực hiện
-└── VII. FAQ & Câu hỏi thường gặp
-```
-
-### 4️⃣ **`huong_dan_thuc_hien.md`** (Hướng dẫn bước-theo-bước - 1000+ dòng)
-- ✅ Hướng dẫn chi tiết từ A-Z
-- ✅ Troubleshooting & giải quyết lỗi
-- ✅ Bảng so sánh kết quả
-- ✅ Tóm lược nhanh nhất
-
-**Nội dung:**
-```
-├── Bước 1: Chuẩn bị môi trường
-├── Bước 2: Chuẩn bị file Python
-├── Bước 3: Chạy các thực nghiệm
-├── Bước 4: Phân tích kết quả
-├── Bước 5: Giải thích kết quả
-├── Bước 6: Tạo báo cáo tổng hợp
-├── Bước 7: Cleanup & tổ chức
-├── Bước 8: Troubleshooting
-└── Bước 9: Tóc lược nhanh
-```
-
----
-
-## 🚀 Bắt Đầu Nhanh (3 Cách)
-
-### Cách 1: DEMO NHANH (30 giây) ⚡
-```bash
-# Không cần cài đặt phức tạp
-python quick_demo.py
-
-# Xem kết quả:
-# DEMO 1: EVASION ATTACK SIMULATION (VR-01) → FAIL ❌
-# DEMO 2: DATA POISONING ATTACK SIMULATION (SR-03) → FAIL ❌
-# DEMO 3: PROMPT INJECTION ATTACK SIMULATION → FAIL ❌ (3/3)
-```
-
-### Cách 2: DEMO ĐẦY ĐỦ (5-10 phút) 🎯
-```bash
-# 1. Setup
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-
-# 2. Huấn luyện
-python train_mnist_model.py
-
-# 3. Chạy tấn công
-python demo_evasion_attack.py
-python demo_data_poisoning_attack.py
-python demo_prompt_injection_attack.py
-
-# 4. Xem kết quả
-ls results/
-```
-
-### Cách 3: TẤT CẢ MỘT LẦN (Nếu có script wrapper) 🏃
-```bash
-python run_all_experiments.py
-```
-
----
-
-## 📊 Kết Quả Dự Kiến
-
-### Demo 1: Evasion Attack (VR-01)
-```
-Hệ thống: CNN trên MNIST
-Tấn công: FGSM
-Kết quả: 
-  • Empirical Robustness: 0.08 (< 0.1) → FAIL ❌
-  • Accuracy Loss @ ε=0.15: 66.4% (>> 10%) → FAIL ❌
-Output: demo_evasion_results.png, demo_evasion_report.txt
-```
-
-### Demo 2: Data Poisoning (SR-03)
-```
-Hệ thống: SVM (5 vs 9)
-Tấn công: 15 mẫu độc
-Kết quả:
-  • Attack Success Rate: 43.2% (>> 10%) → FAIL ❌
-  • Accuracy: 93.6% → 50.4% (tương đương đoán ngẫu nhiên)
-Output: demo_poisoning_results.png, demo_poisoning_report.txt
-```
-
-### Demo 3: Prompt Injection (SR-01, SR-02, PE-01)
-```
-Hệ thống: Chatbot LLM
-Tấn công: Direct Injection, Indirect Injection, PII Leakage
-Kết quả:
-  • SR-01 (Direct): 100% thành công → FAIL ❌
-  • SR-02 (Indirect): 100% thành công → FAIL ❌
-  • PE-01 (PII): 71.4% rò rỉ → FAIL ❌
-Output: demo_injection_report.json
-```
-
----
-
-## 📁 Cấu Trúc File & Thư Mục
-
-```
-chapter4_demo/
-├── README.md                         ← Bạn đang đọc
-├── requirements.txt                  ← Dependencies
-├── quick_demo.py                     ← Chạy nhanh
-├── train_mnist_model.py              ← Huấn luyện CNN
-├── demo_evasion_attack.py            ← Demo 1
-├── demo_data_poisoning_attack.py     ← Demo 2
-├── demo_prompt_injection_attack.py   ← Demo 3
-├── chatbot_system.py                 ← Chatbot base
-├── run_all_experiments.py            ← Master script (nếu có)
-├── data/                             ← MNIST (tự động tạo)
-├── results/                          ← Output (tự động tạo)
-│   ├── demo_evasion_results.png
-│   ├── demo_evasion_report.txt
-│   ├── demo_poisoning_results.png
-│   ├── demo_poisoning_report.txt
-│   ├── demo_injection_report.json
-│   └── CHAPTER4_FINAL_REPORT.txt
-└── venv/                             ← Virtual environment
-```
-
----
-
-## 🔧 Yêu Cầu Hệ Thống
-
-| Yêu cầu | Chi tiết |
-|---------|---------|
-| **Python** | >= 3.8 |
-| **RAM** | Tối thiểu 4GB, Khuyến nghị 8GB+ |
-| **Disk** | ~2GB (cho MNIST dataset) |
-| **CPU** | Bất kỳ (GPU là tùy chọn) |
-| **OS** | Linux, macOS, Windows |
-
----
-
-## 📦 Cài Đặt Phụ Thuộc
-
-### Tối thiểu (Chỉ quick_demo.py)
-```bash
-# Không cần gì cả, chỉ cần Python built-in
-python quick_demo.py
-```
-
-### Standard (Demo thực tế)
-```bash
-pip install torch torchvision
-pip install numpy scikit-learn matplotlib
-pip install adversarial-robustness-toolbox
-```
-
-### Đầy đủ (Tất cả Demo)
-```bash
-pip install -r requirements.txt
-```
-
-### Các vấn đề cài đặt phổ biến
-
-**Lỗi 1: "No module named 'torch'"**
-```bash
-pip install torch torchvision
-```
-
-**Lỗi 2: "secml installation failed"**
-```bash
-# Linux: sudo apt-get install build-essential python3-dev
-# Mac: xcode-select --install
-# Windows: Cài Visual Studio Build Tools
-pip install secml --no-cache-dir
-```
-
-**Lỗi 3: "CUDA not available"**
-→ Không sao, sẽ dùng CPU (chậm hơn nhưng ok)
-
----
-
-## 🎓 Hướng Dẫn Đọc Tài Liệu
-
-### Nếu bạn muốn...
-
-**🏃 Chạy nhanh (1 phút):**
-```
-1. Đọc phần này
-2. Chạy: python quick_demo.py
-3. Hoàn thành!
-```
-
-**🎯 Hiểu từng chi tiết (30 phút):**
-```
-1. Đọc: huong_dan_giai_thich.md
-2. Chạy: python demo_evasion_attack.py
-3. Xem: results/*.png, results/*.txt
-4. So sánh với lý thuyết
-```
-
-**🔬 Làm thực nghiệm đầy đủ (1 giờ):**
-```
-1. Đọc: huong_dan_thuc_hien.md (từng bước)
-2. Thực hiện từng bước
-3. Chạy: python train_mnist_model.py
-4. Chạy: tất cả demo_*.py
-5. Phân tích kết quả
-```
-
-**📚 Hiểu sâu (2-3 giờ):**
-```
-1. Đọc: demo_thuc_nghiem_Ch4.md (mã chi tiết)
-2. Đọc: huong_dan_giai_thich.md (lý thuyết)
-3. Thực hiện toàn bộ thí nghiệm
-4. Tạo báo cáo tổng hợp
-5. So sánh với Chương 1, 2, 3 của đề tài
-```
-
----
-
-## ✅ Checklist Hoàn Thành
-
-- [ ] Cài đặt Python 3.8+
-- [ ] Tạo virtual environment
-- [ ] Cài đặt dependencies
-- [ ] Chạy quick_demo.py (kiểm tra)
-- [ ] Chạy train_mnist_model.py
-- [ ] Chạy demo_evasion_attack.py
-- [ ] Chạy demo_data_poisoning_attack.py
-- [ ] Chạy demo_prompt_injection_attack.py
-- [ ] Xem kết quả trong `results/`
-- [ ] Đọc báo cáo (*.txt, *.json)
-- [ ] Hiểu kết quả (đọc huong_dan_giai_thich.md)
-- [ ] Tạo báo cáo tổng hợp
-
----
-
-## 🎯 Mục Tiêu Chương 4
-
-```
-├─ Chứng minh tính khả thi của AAT-ISO Framework
-├─ Minh họa áp dụng các kỹ thuật tấn công
-├─ Đánh giá hệ thống AI dựa trên Checklist
-└─ Tạo bằng chứng thực tế về hiệu quả kiểm thử
-```
-
----
-
-## 💡 Điểm Quan Trọng
-
-1. **Tất cả Demo đều FAIL** - Điều này là BÌNH THƯỜNG!
-   - Mục đích là minh họa rủi ro
-   - Không phải để nhạo báng hệ thống
-
-2. **Khung AAT-ISO hoạt động tốt** ✓
-   - Có thể phát hiện lỗ hổng
-   - Có thể định lượng rủi ro
-   - Có thể tự động hóa
-
-3. **Metrics là khách quan** 📊
-   - ER, ASR, JSR, PII Leak Rate
-   - Có thể so sánh và bình luận
-   - Có thể theo dõi tiến tiến
-
-4. **Biện pháp giảm thiểu là có sẵn** 🛡️
-   - Adversarial training
-   - Data validation
-   - Guardrails & filtering
-
----
-
-## 📞 Hỗ Trợ
-
-Nếu gặp lỗi:
-1. Xem phần "Troubleshooting" trong `huong_dan_thuc_hien.md`
-2. Kiểm tra yêu cầu hệ thống
-3. Cập nhật pip: `pip install --upgrade pip`
-4. Xóa cache: `pip install --no-cache-dir <package>`
-
----
-
-## 📖 Tài Liệu Liên Quan
-
-- 📄 Chương 1: Phân tích ISO 23894:2023
-- 📄 Chương 2: Kỹ thuật tấn công & Metrics
-- 📄 Chương 3: Checklist & AAT-ISO Framework
-- 📄 **Chương 4: Kịch bản Demo** ← Bạn đang ở đây
-- 📄 Chương 5: Kết luận & Hướng phát triển
-
----
-
-## 📊 BÁO CÁO KẾT QUẢ THỰC NGHIỆM
-
-Sau khi chạy thực nghiệm, tham khảo các báo cáo chi tiết:
-
-### 🎯 [INDEX_REPORTS.md](INDEX_REPORTS.md) ← BẮT ĐẦU TỪ ĐÂY!
-**Chỉ mục tổng hợp** - Hướng dẫn chọn tài liệu phù hợp với vai trò và mục đích của bạn.
-
-### 📑 Các báo cáo chính:
-
-| Tài liệu | Đối tượng | Thời gian | Nội dung |
-|----------|-----------|-----------|----------|
-| **[EXECUTIVE_SUMMARY.md](EXECUTIVE_SUMMARY.md)** | Quản lý, Leadership | 3 phút | Tóm tắt nhanh, rủi ro, action items |
-| **[FINAL_REPORT.md](FINAL_REPORT.md)** | PM, Researcher, Auditor | 30 phút | Báo cáo đầy đủ kết quả 3 demos |
-| **[EXPERIMENTAL_GUIDE.md](EXPERIMENTAL_GUIDE.md)** | Developer, Engineer, Sinh viên | 60 phút | Hướng dẫn kỹ thuật chi tiết, FAQ |
-
-### 📊 Tóm tắt kết quả:
-
-```
-Demo 1 (CNN/MNIST)      VR-01      ❌ FAIL   [████████░░]  80%
-Demo 2 (SVM Binary)     SR-03      ✅ PASS   [██████████] 100%
-Demo 3 (Chatbot LLM)    SR-01/02   ❌ FAIL   [░░░░░░░░░░]   0%
-
-Overall Security Score: 33% (1/3 PASS)
-```
-
-**🔴 RỦI RO CRITICAL:** Demo 3 (Chatbot) có lỗ hổng nghiêm trọng - 100% vulnerable với prompt injection!
-
-**📖 Xem chi tiết:** [EXECUTIVE_SUMMARY.md](EXECUTIVE_SUMMARY.md)
-
----
-
-## 🎉 Bắt Đầu Thôi!
-
-```bash
-# Cách nhanh nhất (30 giây)
-python quick_demo.py
-
-# Hoặc chạy từng Demo
-python train_mnist_model.py
-python demo_evasion_attack.py
-```
-
-**Chúc bạn thành công! 🚀**
-
----
-
-**Tài liệu này được tạo để hỗ trợ Chương 4 của đề tài:**
-> "Xây dựng Kịch bản Demo trên Hệ thống AI Giả định"
-
-**Phiên bản:** 1.0  
-**Ngày cập nhật:** Tháng 12, 2025
+# Demo Kiểm thử An toàn AI (AI Security Demo)
+
+Dự án này cung cấp các mã nguồn demo thực tế cho việc kiểm thử an toàn hệ thống AI, minh họa các kỹ thuật tấn công Evasion, Data Poisoning và Prompt Injection nhằm đánh giá tính bền vững của mô hình.
+
+## 📂 Cấu trúc Dự án
+
+d:\code\cdcs\
+├── 📄 demo_data_poisoning_attack.py   # Demo tấn công đầu độc dữ liệu (Data Poisoning - SVM)
+├── 📄 demo_evasion_attack.py          # Demo tấn công né tránh (Evasion Attack - FGSM trên CNN)
+├── 📄 demo_prompt_injection_attack.py # Demo tấn công tiêm câu lệnh (Prompt Injection trên LLM giả định)
+├── 📄 train_mnist_model.py            # Script huấn luyện mô hình CNN cơ sở trên bộ dữ liệu MNIST
+├── 📄 run_all_real_demos.py           # Script chạy tự động toàn bộ quy trình demo
+├── 📄 check_gpu.py                    # Kiểm tra trạng thái GPU (CUDA) để tăng tốc độ xử lý
+├── 📂 data/                           # Thư mục chứa dữ liệu (MNIST)
+├── 📂 docs/                           # Tài liệu báo cáo và hướng dẫn chi tiết
+├── 📂 results/                        # Kết quả đầu ra (báo cáo text/json, biểu đồ ảnh)
+└── 📂 setup/                          # Các file cài đặt môi trường## 🚀 Cài đặt Môi trường
+
+Yêu cầu: Python 3.8+
+
+1. **Tạo môi trường ảo (Khuyên dùng):**
+   
+   python -m venv venv
+   # Windows:
+   .\venv\Scripts\activate
+   # Linux/Mac:
+   source venv/bin/activate
+   2. **Cài đặt các thư viện phụ thuộc:**
+   pip install -r setup/requirements.txt
+   3. **Kiểm tra GPU (Tùy chọn):**
+   python check_gpu.py
+      *Lưu ý: Nếu không có GPU, code sẽ tự động chạy trên CPU.*
+
+## 🛠️ Hướng dẫn Sử dụng
+
+### 1. Huấn luyện Mô hình Cơ sở
+Trước khi chạy các demo tấn công (đặc biệt là Evasion), bạn cần huấn luyện mô hình CNN. File `mnist_cnn_model.pth` sẽ được tạo ra sau khi chạy xong.
+
+python train_mnist_model.py### 2. Chạy các Kịch bản Tấn công Riêng lẻ
+
+**Kịch bản 1: Evasion Attack (Tấn công né tránh)**
+Minh họa tấn công FGSM (Fast Gradient Sign Method) để đánh lừa mô hình nhận diện chữ viết tay.
+python demo_evasion_attack.py**Kịch bản 2: Data Poisoning (Đầu độc dữ liệu)**
+Minh họa việc tiêm nhiễm dữ liệu độc hại vào tập train làm sai lệch ranh giới quyết định của mô hình SVM (Label Flipping).
+python demo_data_poisoning_attack.py**Kịch bản 3: Prompt Injection (Tiêm câu lệnh)**
+Minh họa các kỹ thuật tấn công vào hệ thống Chatbot giả định để trích xuất thông tin nhạy cảm (PII) hoặc thay đổi hành vi.
+python demo_prompt_injection_attack.py### 3. Chạy Toàn bộ Demo (Tự động)
+Để chạy lần lượt tất cả các bước (huấn luyện -> tấn công -> báo cáo) trong một lần chạy:
+
+python run_all_real_demos.py## 📊 Kết quả & Báo cáo
+
+Sau khi thực thi, kết quả sẽ được lưu tự động trong thư mục `results/`:
+*   **Báo cáo chi tiết:** Các file `_report.txt` và `_report.json` chứa các chỉ số đánh giá (Robustness, Attack Success Rate).
+*   **Trực quan hóa:**
+    *   `demo_evasion_results.png`: So sánh ảnh gốc và ảnh đối kháng.
+    *   `demo_poisoning_results.png`: Biểu đồ thay đổi ranh giới phân lớp trước và sau khi bị đầu độc.
+
+Tham khảo thêm thư mục `docs/` để đọc các báo cáo tổng hợp chi tiết (`FINAL_REPORT.md`, `EXECUTIVE_SUMMARY.md`).

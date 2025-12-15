@@ -1,6 +1,7 @@
 *.zip
 venv/
-*pycache*
+__pycache__/
 *.pth
 *.pt
 data/
+.gitignore
