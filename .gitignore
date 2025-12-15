@@ -1,3 +1,6 @@
 *.zip
 venv/
-__pycache__/
+*pycache*
+*.pth
+*.pt
+data/
