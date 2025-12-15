@@ -1,0 +1,53 @@
+{
+  "demo_name": "Evasion Attack (FGSM)",
+  "checklist": "VR-01",
+  "timestamp": "2025-12-10T22:21:14.860103",
+  "accuracy_clean": 0.998,
+  "empirical_robustness": 0.0,
+  "results": [
+    {
+      "epsilon": 0.0,
+      "accuracy": 0.998,
+      "accuracy_loss": 0.0
+    },
+    {
+      "epsilon": 0.05,
+      "accuracy": 0.996,
+      "accuracy_loss": 0.0020000000000000018
+    },
+    {
+      "epsilon": 0.1,
+      "accuracy": 0.992,
+      "accuracy_loss": 0.006000000000000005
+    },
+    {
+      "epsilon": 0.15,
+      "accuracy": 0.992,
+      "accuracy_loss": 0.006000000000000005
+    },
+    {
+      "epsilon": 0.2,
+      "accuracy": 0.994,
+      "accuracy_loss": 0.0040000000000000036
+    },
+    {
+      "epsilon": 0.25,
+      "accuracy": 0.99,
+      "accuracy_loss": 0.008000000000000007
+    },
+    {
+      "epsilon": 0.3,
+      "accuracy": 0.982,
+      "accuracy_loss": 0.016000000000000014
+    }
+  ],
+  "evaluation": {
+    "er_threshold": 0.1,
+    "er_value": 0.0,
+    "er_pass": false,
+    "acc_loss_threshold": 0.1,
+    "acc_loss_value": 0.006000000000000005,
+    "acc_loss_pass": true
+  },
+  "overall_status": "FAIL"
+}

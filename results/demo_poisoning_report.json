@@ -1,0 +1,17 @@
+{
+  "demo_name": "Data Poisoning Attack",
+  "checklist": "SR-03",
+  "timestamp": "2025-12-10T22:21:18.696551",
+  "n_poison": 15,
+  "poison_rate": 5.190311418685121,
+  "accuracy_clean": 0.9863013698630136,
+  "accuracy_poisoned": 0.9863013698630136,
+  "accuracy_drop": 0.0,
+  "asr": 0.0,
+  "evaluation": {
+    "asr_threshold": 0.1,
+    "asr_value": 0.0,
+    "asr_pass": true
+  },
+  "overall_status": "PASS"
+}

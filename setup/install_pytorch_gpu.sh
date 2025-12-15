@@ -1,0 +1,64 @@
+#!/bin/bash
+# Script cài đặt PyTorch với GPU support (CUDA 12.4) cho Linux/Mac
+# Chạy trong virtual environment nếu có
+
+set -e
+
+echo "============================================================"
+echo "CÀI ĐẶT PYTORCH VỚI GPU (CUDA 12.4)"
+echo "============================================================"
+echo ""
+
+echo "[*] Kiểm tra Python..."
+python3 --version || {
+    echo "[!] Python không tìm thấy!"
+    echo "[!] Vui lòng cài Python 3.8+ trước"
+    exit 1
+}
+
+echo ""
+echo "[*] Gỡ PyTorch cũ (nếu có)..."
+pip uninstall -y torch torchvision torchaudio 2>/dev/null || true
+
+echo ""
+echo "[*] Cài đặt dependencies cơ bản..."
+pip install numpy>=1.21.0 matplotlib>=3.4.0 scikit-learn>=1.0.0
+
+echo ""
+echo "============================================================"
+echo "[*] Cài đặt PyTorch với CUDA 12.4..."
+echo "============================================================"
+echo ""
+echo "[!] Đang download (~2-3GB)... Có thể mất vài phút!"
+echo ""
+
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124 || {
+    echo ""
+    echo "[!] CÀI ĐẶT GPU VERSION THẤT BẠI!"
+    echo "[?] Cài CPU version thay vì GPU? (y/n)"
+    read -r response
+    if [[ "$response" =~ ^[Yy]$ ]]; then
+        pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+    else
+        exit 1
+    fi
+}
+
+echo ""
+echo "============================================================"
+echo "[*] Kiểm tra cài đặt..."
+echo "============================================================"
+echo ""
+
+python3 check_gpu.py
+
+echo ""
+echo "============================================================"
+echo "HOÀN TẤT CÀI ĐẶT!"
+echo "============================================================"
+echo ""
+echo "[+] Bây giờ bạn có thể chạy:"
+echo "    python3 train_mnist_model.py"
+echo "    python3 demo_evasion_attack.py"
+echo ""
+

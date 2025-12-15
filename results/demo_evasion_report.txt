@@ -1,0 +1,40 @@
+KỲ KIỂM THỬ TẤN CÔNG EVASION (FGSM)
+============================================================
+
+Thời gian: 2025-12-10 22:21:14
+
+Độ chính xác sạch: 99.80%
+
+Kết quả tấn công FGSM:
+
+Epsilon = 0.00:
+  Độ chính xác: 99.80%
+  Suy giảm: 0.00%
+
+Epsilon = 0.05:
+  Độ chính xác: 99.60%
+  Suy giảm: 0.20%
+
+Epsilon = 0.10:
+  Độ chính xác: 99.20%
+  Suy giảm: 0.60%
+
+Epsilon = 0.15:
+  Độ chính xác: 99.20%
+  Suy giảm: 0.60%
+
+Epsilon = 0.20:
+  Độ chính xác: 99.40%
+  Suy giảm: 0.40%
+
+Epsilon = 0.25:
+  Độ chính xác: 99.00%
+  Suy giảm: 0.80%
+
+Epsilon = 0.30:
+  Độ chính xác: 98.20%
+  Suy giảm: 1.60%
+
+Empirical Robustness: 0.0000
+Threshold (ER > 0.1): FAIL
+Kết quả tổng hợp: FAIL

@@ -1,0 +1,54 @@
+# CHƯƠNG 4: Kịch bản Demo Kiểm thử Đối kháng Tự động
+
+# ============================================================================
+# QUICK DEMO (Mô phỏng) - quick_demo.py
+# ============================================================================
+# Chỉ cần Python standard library (không cần install gì)
+
+# ============================================================================
+# REAL DEMO (Thực tế) - train_mnist_model.py, demo_*.py
+# ============================================================================
+
+# Core dependencies
+numpy>=1.21.0
+matplotlib>=3.4.0
+
+# Deep Learning (Demo 1: Evasion Attack) - với GPU support
+# QUAN TRỌNG: Để sử dụng GPU với CUDA 12.4, cài như sau:
+#
+# ⚡ GPU (CUDA 12.4) - KHUYẾN NGHỊ:
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+#
+# 💻 CPU only (nhẹ hơn nhưng chậm):
+#   pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+#
+# Nếu chạy lệnh dưới đây, sẽ cài CPU version:
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Machine Learning (Demo 2: Data Poisoning)
+scikit-learn>=1.0.0
+
+# Optional: Adversarial Robustness Toolbox (nếu muốn dùng ART cho Demo 1)
+# adversarial-robustness-toolbox>=1.15.0
+
+# ============================================================================
+# HƯỚNG DẪN CÀI ĐẶT
+# ============================================================================
+#
+# 1. CÀI ĐẶT VỚI GPU (CUDA 12.4) - Nhanh hơn 10-50x:
+#    pip install numpy matplotlib scikit-learn
+#    pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+#
+# 2. CÀI ĐẶT CPU ONLY - Không cần GPU:
+#    pip install numpy matplotlib scikit-learn
+#    pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+#
+# 3. HOẶC CÀI TẤT CẢ (CPU version):
+#    pip install -r requirements.txt
+#
+# 4. KIỂM TRA GPU:
+#    python -c "import torch; print('GPU:', torch.cuda.is_available())"
+#
+# Xem thêm: https://pytorch.org/get-started/locally/
+
